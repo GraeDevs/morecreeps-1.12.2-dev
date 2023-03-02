@@ -1,0 +1,42 @@
+{
+  "display": {
+    "icon": {
+      "item": "morecreeps:blorp_cola"
+    },
+    "title": {
+      "translate": "advancements.morecreeps.colachugger.title",
+      "color": "dark_purple",
+      "bold": true
+    },
+    "description": {
+      "translate": "advancements.morecreeps.colachugger.desc",
+      "color": "light_purple",
+      "italic": true
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "morecreeps:root",
+  "criteria": {
+    "cola_chugger": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "morecreeps:blorp_cola",
+            "count": {
+              "min": 10,
+              "max": 10
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cola_chugger"
+    ]
+  ]
+}
