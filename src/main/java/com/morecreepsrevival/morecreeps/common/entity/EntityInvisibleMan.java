@@ -38,6 +38,7 @@ public class EntityInvisibleMan extends EntityCreepBase {
 
     public EntityInvisibleMan(World world) {
         super(world);
+
         setCreepName("Invisible Man");
 
         creatureType = EnumCreatureType.MONSTER;
@@ -45,6 +46,8 @@ public class EntityInvisibleMan extends EntityCreepBase {
         baseHealth = (float)rand.nextInt(40) + 40.0f;
 
         baseSpeed = 0.3d;
+
+        setSize(0.8f, 1.8f);
 
         dataManager.set(anger, false);
         
@@ -63,7 +66,7 @@ public class EntityInvisibleMan extends EntityCreepBase {
     {
         super.entityInit();
 
-
+        dataManager.register(anger, false);
     }
 
     @Override
@@ -92,7 +95,7 @@ public class EntityInvisibleMan extends EntityCreepBase {
         targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 
     }
-
+    @Override
     public void setRevengeTarget(@Nullable EntityLivingBase livingBase)
     {
         super.setRevengeTarget(livingBase);
@@ -103,7 +106,7 @@ public class EntityInvisibleMan extends EntityCreepBase {
         }
     }
 
-
+    @Override
     public boolean attackEntityFrom(DamageSource damagesource, float i)
     {
         Entity entity = damagesource.getTrueSource();
@@ -134,10 +137,9 @@ public class EntityInvisibleMan extends EntityCreepBase {
     private void becomeAngryAt(Entity entity) {
         this.setAttackTarget((EntityLivingBase)entity);
         angerLevel += 40 + rand.nextInt(40);
-        hasAngryTexture = true;
         dataManager.set(anger, true);
     }
-
+    @Override
     public void onUpdate() {
         super.onUpdate();
         
@@ -153,7 +155,7 @@ public class EntityInvisibleMan extends EntityCreepBase {
         	hasAngryTexture = true;
         }
     }
-
+    @Override
     public void onLivingUpdate()
     {
         super.onLivingUpdate();
